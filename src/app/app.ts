@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ListItem } from './ui/list-item/list-item';
 import { CalciumItem } from './shared/calcium-item';
+import { EmptyListItem } from './ui/empty-list-item/empty-list-item';
 
 @Component({
   selector: 'app-root',
-  imports: [ListItem],
+  imports: [ListItem, EmptyListItem],
   templateUrl: './app.html',
 })
 export class App {
