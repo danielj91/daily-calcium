@@ -8,4 +8,13 @@ import { CalciumItem } from '../../shared/calcium-item';
 })
 export class ListItem {
   item = input.required<CalciumItem>();
+
+  increment() {
+    this.item().units += 1;
+  }
+
+  decrement() {
+    this.item().units -= 1;
+    if (this.item().units < 0) this.item().units = 0;
+  }
 }
