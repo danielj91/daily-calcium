@@ -14,7 +14,7 @@ export class ListItem {
   }
 
   decrement() {
+    if (this.item().units <= 1) return;
     this.item().units -= 1;
-    if (this.item().units < 0) this.item().units = 0;
   }
 }
