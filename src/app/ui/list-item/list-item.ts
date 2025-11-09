@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CalciumItem } from '../../shared/calcium-item';
 
 @Component({
@@ -8,13 +8,25 @@ import { CalciumItem } from '../../shared/calcium-item';
 })
 export class ListItem {
   item = input.required<CalciumItem>();
+  updateUnits = output<unitsChangedEvent>();
 
   increment() {
-    this.item().units += 1;
+    this.updateUnits.emit({
+      id: this.item().id,
+      units: this.item().units + 1,
+    });
   }
 
   decrement() {
-    if (this.item().units <= 1) return;
-    this.item().units -= 1;
+    if (this.item().units == 0) return;
+    this.updateUnits.emit({
+      id: this.item().id,
+      units: this.item().units - 1,
+    });
   }
+}
+
+export interface unitsChangedEvent {
+  id: number;
+  units: number;
 }

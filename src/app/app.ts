@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ListItem } from './ui/list-item/list-item';
+import { Component, computed, signal, WritableSignal } from '@angular/core';
+import { ListItem, unitsChangedEvent } from './ui/list-item/list-item';
 import { CalciumItem } from './shared/calcium-item';
 import { EmptyListItem } from './ui/empty-list-item/empty-list-item';
 import { ResultCard } from './ui/result-card/result-card';
@@ -10,7 +10,7 @@ import { ResultCard } from './ui/result-card/result-card';
   templateUrl: './app.html',
 })
 export class App {
-  list_of_items: CalciumItem[] = [
+  list_of_items: WritableSignal<CalciumItem[]> = signal([
     {
       id: 1,
       name: 'milk',
@@ -23,5 +23,19 @@ export class App {
       calcium_per_unit: 1,
       units: 1,
     },
-  ];
+  ]);
+
+  calcium_amount = computed(() => {
+    return this.list_of_items().reduce((total, item) => {
+      return total + item.calcium_per_unit * item.units;
+    }, 0);
+  });
+
+  updateUnits(newValue: unitsChangedEvent) {
+    this.list_of_items.update((items) =>
+      items.map((item) =>
+        item.id === newValue.id ? { ...item, units: newValue.units } : item
+      )
+    );
+  }
 }
