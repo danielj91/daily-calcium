@@ -1,14 +1,19 @@
-import { Component, computed, signal, WritableSignal } from "@angular/core";
-import { ListItem, unitsChangedEvent } from "./ui/list-item/list-item";
-import { CalciumItem } from "./shared/calcium-item";
-import { EmptyListItem } from "./ui/empty-list-item/empty-list-item";
-import { ResultCard } from "./ui/result-card/result-card";
-import { EditItemModal } from "./ui/edit-item-modal/edit-item-modal";
+import {
+  Component,
+  computed,
+  signal,
+  type WritableSignal,
+} from '@angular/core';
+import type { CalciumItem } from './shared/calcium-item';
+import { EditItemModal } from './ui/edit-item-modal/edit-item-modal';
+import { EmptyListItem } from './ui/empty-list-item/empty-list-item';
+import { ListItem, type unitsChangedEvent } from './ui/list-item/list-item';
+import { ResultCard } from './ui/result-card/result-card';
 
 @Component({
-  selector: "app-root",
+  selector: 'app-root',
   imports: [ListItem, EmptyListItem, ResultCard, EditItemModal],
-  templateUrl: "./app.html",
+  templateUrl: './app.html',
 })
 export class App {
   showEditModal = false;
@@ -16,13 +21,13 @@ export class App {
   list_of_items: WritableSignal<CalciumItem[]> = signal([
     {
       id: 1,
-      name: "milk",
+      name: 'milk',
       calcium_per_unit: 1,
       units: 1,
     },
     {
       id: 2,
-      name: "milk",
+      name: 'milk',
       calcium_per_unit: 1,
       units: 1,
     },

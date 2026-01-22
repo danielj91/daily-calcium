@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { CalciumItem } from '../../shared/calcium-item';
+import type { CalciumItem } from '../../shared/calcium-item';
 
 @Component({
   selector: 'app-list-item',
@@ -18,7 +18,7 @@ export class ListItem {
   }
 
   decrement() {
-    if (this.item().units == 0) return;
+    if (this.item().units === 0) return;
     this.updateUnits.emit({
       id: this.item().id,
       units: this.item().units - 1,
