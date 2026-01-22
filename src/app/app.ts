@@ -1,25 +1,28 @@
-import { Component, computed, signal, WritableSignal } from '@angular/core';
-import { ListItem, unitsChangedEvent } from './ui/list-item/list-item';
-import { CalciumItem } from './shared/calcium-item';
-import { EmptyListItem } from './ui/empty-list-item/empty-list-item';
-import { ResultCard } from './ui/result-card/result-card';
+import { Component, computed, signal, WritableSignal } from "@angular/core";
+import { ListItem, unitsChangedEvent } from "./ui/list-item/list-item";
+import { CalciumItem } from "./shared/calcium-item";
+import { EmptyListItem } from "./ui/empty-list-item/empty-list-item";
+import { ResultCard } from "./ui/result-card/result-card";
+import { EditItemModal } from "./ui/edit-item-modal/edit-item-modal";
 
 @Component({
-  selector: 'app-root',
-  imports: [ListItem, EmptyListItem, ResultCard],
-  templateUrl: './app.html',
+  selector: "app-root",
+  imports: [ListItem, EmptyListItem, ResultCard, EditItemModal],
+  templateUrl: "./app.html",
 })
 export class App {
+  showEditModal = false;
+
   list_of_items: WritableSignal<CalciumItem[]> = signal([
     {
       id: 1,
-      name: 'milk',
+      name: "milk",
       calcium_per_unit: 1,
       units: 1,
     },
     {
       id: 2,
-      name: 'milk',
+      name: "milk",
       calcium_per_unit: 1,
       units: 1,
     },
@@ -34,8 +37,16 @@ export class App {
   updateUnits(newValue: unitsChangedEvent) {
     this.list_of_items.update((items) =>
       items.map((item) =>
-        item.id === newValue.id ? { ...item, units: newValue.units } : item
-      )
+        item.id === newValue.id ? { ...item, units: newValue.units } : item,
+      ),
     );
+  }
+
+  showModal() {
+    this.showEditModal = true;
+  }
+
+  hideModal() {
+    this.showEditModal = false;
   }
 }
