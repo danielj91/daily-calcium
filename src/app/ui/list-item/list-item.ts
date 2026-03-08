@@ -27,6 +27,6 @@ export class ListItem {
 }
 
 export interface unitsChangedEvent {
-  id: number;
+  id: string;
   units: number;
 }

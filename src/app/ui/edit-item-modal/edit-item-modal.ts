@@ -6,9 +6,9 @@ import { Component, output } from '@angular/core';
   templateUrl: './edit-item-modal.html',
 })
 export class EditItemModal {
-  closeModal = output<void>();
+  public cancel = output<void>();
 
-  onCloseModal() {
-    this.closeModal.emit();
+  protected hideModal() {
+    this.cancel.emit();
   }
 }

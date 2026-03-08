@@ -1,20 +1,21 @@
 <div class="flex h-screen">
-  @if (showEditModal) { <app-edit-item-modal (closeModal)="hideModal()" /> }
+  @if (showEditModal) { <app-edit-item-modal (cancel)="hideModal()" /> }
   <div
     class="flex-1 flex flex-col justify-center px-8 relative overflow-y-auto"
   >
     <button
+      type="button"
       class="absolute bottom-4 right-8 z-10 px-5 py-2.5 shadow-lg bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
       (click)="showModal()"
     >
       Tilføj
     </button>
-    @for (item of list_of_items(); track item.id) {
+    @for (item of calciumService.calciumItems(); track item.id) {
     <app-list-item [item]="item" (updateUnits)="updateUnits($event)" />} @empty
     {
     <app-empty-list-item />}
   </div>
   <div class="flex-1 flex flex-col justify-center px-8">
-    <app-result-card [value]="calcium_amount()" />
+    <app-result-card [value]="calciumAmount()" />
   </div>
 </div>
