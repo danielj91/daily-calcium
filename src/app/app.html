@@ -1,5 +1,7 @@
 <div class="flex h-screen">
-  @if (showEditModal) { <app-edit-item-modal (cancel)="hideModal()" /> }
+  @if (showEditModal) {
+  <app-edit-item-modal (cancel)="hideModal()" (save)="saveItem($event)" />
+  }
   <div
     class="flex-1 flex flex-col justify-center px-8 relative overflow-y-auto"
   >

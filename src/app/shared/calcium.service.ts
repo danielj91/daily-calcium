@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import type { unitsChangedEvent } from '../ui/list-item/list-item';
-import type { CalciumItem } from './calcium-item';
+import type { CalciumItem, CreateCalciumItemDto } from './calcium-item';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class CalciumService {
     });
   }
 
-  public saveCalciumItem(item: CalciumItem): void {
+  public saveCalciumItem(item: CreateCalciumItemDto): void {
     this.http.post<CalciumItem>(this.apiUrl, item).subscribe((savedItem) => {
       this._calciumItems.update((list) => [...list, savedItem]);
     });

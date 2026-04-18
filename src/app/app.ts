@@ -6,6 +6,7 @@ import {
   type Signal,
 } from '@angular/core';
 import { CalciumService } from './shared/calcium.service';
+import type { CreateCalciumItemDto } from './shared/calcium-item';
 import { EditItemModal } from './ui/edit-item-modal/edit-item-modal';
 import { EmptyListItem } from './ui/empty-list-item/empty-list-item';
 import { ListItem, type unitsChangedEvent } from './ui/list-item/list-item';
@@ -39,6 +40,11 @@ export class App implements OnInit {
   }
 
   protected hideModal(): void {
+    this.showEditModal = false;
+  }
+
+  protected saveItem(item: CreateCalciumItemDto) {
+    this.calciumService.saveCalciumItem(item);
     this.showEditModal = false;
   }
 }
