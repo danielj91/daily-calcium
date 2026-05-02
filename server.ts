@@ -57,6 +57,8 @@ async function saveCalciumItem(request: Request): Promise<Response> {
       name: requestItem.name,
       calcium_per_unit: requestItem.calcium_per_unit,
       units: requestItem.units,
+      unit_type: requestItem.unit_type,
+      servings: 0,
     };
 
     calciumItems.push(newCalciumItem);

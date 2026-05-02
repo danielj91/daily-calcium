@@ -13,20 +13,20 @@ export class ListItem {
   increment() {
     this.updateUnits.emit({
       id: this.item().id,
-      units: this.item().units + 1,
+      servings: this.item().servings + 1,
     });
   }
 
   decrement() {
-    if (this.item().units === 0) return;
+    if (this.item().servings === 0) return;
     this.updateUnits.emit({
       id: this.item().id,
-      units: this.item().units - 1,
+      servings: this.item().servings - 1,
     });
   }
 }
 
 export interface unitsChangedEvent {
   id: string;
-  units: number;
+  servings: number;
 }

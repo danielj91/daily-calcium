@@ -1,17 +1,26 @@
-<div class="flex justify-center my-1 px-2 border-1 rounded-lg shadow-md">
-  <div class="flex flex-auto flex-col p-1">
-    <p class="font-bold">{{ item().name }}</p>
-    <p class="">{{ item().calcium_per_unit }}</p>
+<div class="flex justify-center my-1 px-2 border rounded-lg shadow-md h-20">
+  <div class="flex flex-auto flex-col p-1 justify-center">
+    <div class="flex gap-2 items-baseline">
+      <p class="font-bold text-xl">{{ item().name }}</p>
+      <p class="italic text-gray-500">
+        - {{ item().units }} {{ item().unit_type }}
+      </p>
+    </div>
+    <p class="">{{ item().calcium_per_unit }} mg</p>
   </div>
   <div class="flex justify-end items-center">
     <button
+      type="button"
       class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-300"
       (click)="decrement()"
     >
       -
     </button>
-    <p class="font-bold text-3xl mx-1 w-10 text-center">{{ item().units }}</p>
+    <p class="font-bold text-3xl mx-1 w-10 text-center">
+      {{ item().servings }}
+    </p>
     <button
+      type="button"
       class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-300"
       (click)="increment()"
     >

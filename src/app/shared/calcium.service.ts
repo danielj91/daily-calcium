@@ -48,7 +48,9 @@ export class CalciumService {
   public updateUnits(newValue: unitsChangedEvent): void {
     this._calciumItems.update((items) =>
       items.map((item) =>
-        item.id === newValue.id ? { ...item, units: newValue.units } : item,
+        item.id === newValue.id
+          ? { ...item, servings: newValue.servings }
+          : item,
       ),
     );
   }

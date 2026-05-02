@@ -27,7 +27,7 @@ export class App implements OnInit {
 
   protected calciumAmount: Signal<number> = computed(() => {
     return this.calciumService.calciumItems().reduce((total, item) => {
-      return total + item.calcium_per_unit * item.units;
+      return total + item.calcium_per_unit * item.servings;
     }, 0);
   });
 
