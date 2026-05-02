@@ -15,6 +15,7 @@ export class EditItemModal {
     name: '',
     calcium_per_unit: 0,
     units: 0,
+    unit_type: 'g',
   });
   protected calciumItemForm = form(this.calciumItemFormModel);
 
